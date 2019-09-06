@@ -1,0 +1,29 @@
+name: duty-call-example
+description: example of a java pack with inspirational quotes
+steps:
+- id: receive_page_of_duty_request
+  event:
+    packName: Slack
+    name: ReceivedMessage
+  context:
+    Tts: "{% if Event.Payload.threadTimestamp != '' %}{{ Event.Payload.threadTimestamp }}{% else %}{{ Event.Payload.timestamp }}{% endif %}"
+    ChannelID: '{{ Event.Payload.channelId }}'
+    Requestor: "{{ Event.Payload.user.id }}"
+  criteria: "{{ Event.Payload.message|match:'^flyte(\\\\s+)duty-call$' }}"
+  command:
+    packName: page-of-duty-pack
+    name: Rota
+    input: "test"
+- id: send_response
+  event:
+    packName: page-of-duty-pack
+    name: RotaRetrieved
+  dependsOn:
+  - receive_page_of_duty_request
+  command:
+    packName: Slack
+    name: SendMessage
+    input:
+      channelId: "{{ Context.ChannelID }}"
+      threadTimestamp: "{{ Context.Tts }}"
+      message: "{{Event.Payload}} is on-call today!!!!"
