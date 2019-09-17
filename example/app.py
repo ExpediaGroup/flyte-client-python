@@ -10,8 +10,8 @@ from flyte.client.client import Client
 from flyte.pack.classes import PackDef, Command, EventDef, CommandHandler, Event
 
 
-class RequestOneCommandHandler(CommandHandler):
-    """command handler that process requestOne commands"""
+class RotaCommandHandler(CommandHandler):
+    """command handler that process rota commands"""
 
     def __init__(self, log) -> None:
         self.logger = log
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         pack_def = PackDef(
             name="page-of-duty-pack",
             commands=[
-                Command(name="Rota", handler=RequestOneCommandHandler(logger), output_events=[
+                Command(name="Rota", handler=RotaCommandHandler(logger), output_events=[
                     EventDef(name="RotaRetrieved"),
                     EventDef(name="Error"),
                 ]),
