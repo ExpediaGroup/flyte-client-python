@@ -1,5 +1,5 @@
 name: duty-call-example
-description: example of a java pack with inspirational quotes
+description: returns who is on call today
 steps:
 - id: receive_page_of_duty_request
   event:
@@ -13,7 +13,7 @@ steps:
   command:
     packName: page-of-duty-pack
     name: Rota
-    input: "test"
+    input: "tests"
 - id: send_response
   event:
     packName: page-of-duty-pack
