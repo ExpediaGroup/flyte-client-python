@@ -36,7 +36,7 @@ class TestWebClientFunctional(unittest.TestCase):
         app.router.add_post("/v1/packs/page-of-duty-pack/actions/id/result", self.complete)
         runner = web.AppRunner(app)
         await runner.setup()
-        self.site = web.TCPSite(runner, "localhost", 8765)
+        self.site = web.TCPSite(runner, "0.0.0.0", 38765)
         await self.site.start()
 
     async def links(self, _):
