@@ -144,13 +144,13 @@ make test
 ## Running the example pack
 
 You need to make sure that flyte server and flyte-slack pack are up and running. 
-Please check how to run them locally [here](https://github.com/HotelsDotCom/flyte/blob/master/docs/quickstart.md#spin-up-your-local-environment):
+Please check how to run them locally [here](https://github.com/ExpediaGroup/flyte/blob/master/docs/quickstart.md#spin-up-your-local-environment):
 
 ```
 make run-example
 ```
 
-You will also need to push an [example flow](example/flow.yaml) to test it. Check how to do it [here](https://github.com/HotelsDotCom/flyte/blob/master/docs/quickstart.md#installing-a-flow)
+You will also need to push an [example flow](example/flow.yaml) to test it. Check how to do it [here](https://github.com/ExpediaGroup/flyte/blob/master/docs/quickstart.md#installing-a-flow)
 
 ## Create a docker container
 
