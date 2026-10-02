@@ -4,7 +4,10 @@ import sys
 
 from setuptools import setup, find_packages, Command
 
-tests_require = ["pytest", "pytest-cov", "codecov", "asynctest", "coverage", "flake8", "black", "aiohttp", "dataclasses_json"]
+tests_require = [
+    "pytest", "pytest-cov", "codecov", "asynctest", "trustme",
+    "coverage", "flake8", "black", "aiohttp", "dataclasses_json",
+]
 
 here = os.path.abspath(os.path.dirname(__file__))
 

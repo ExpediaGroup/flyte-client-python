@@ -54,7 +54,7 @@ class Client:
             )
 
         async with aiohttp.ClientSession(
-            connector=aiohttp.TCPConnector(ssl=self._insecure_skip_verify)
+            connector=aiohttp.TCPConnector(ssl=False if self._insecure_skip_verify else None)
         ) as session:
             content, status_code = await self._post(
                 session, self._events_url, e.to_json()
@@ -78,7 +78,7 @@ class Client:
             )
 
         async with aiohttp.ClientSession(
-            connector=aiohttp.TCPConnector(ssl=self._insecure_skip_verify)
+            connector=aiohttp.TCPConnector(ssl=False if self._insecure_skip_verify else None)
         ) as session:
             content, status_code = await self._post(
                 session, self._take_action_url, None
@@ -106,7 +106,7 @@ class Client:
         """
         complete_action_url = a.get_action_complete_url()
         async with aiohttp.ClientSession(
-            connector=aiohttp.TCPConnector(ssl=self._insecure_skip_verify)
+            connector=aiohttp.TCPConnector(ssl=False if self._insecure_skip_verify else None)
         ) as session:
             content, status_code = await self._post(
                 session, complete_action_url, e.to_json()
@@ -124,7 +124,7 @@ class Client:
         """
         packs_url = self._get_packs_url()
         async with aiohttp.ClientSession(
-            connector=aiohttp.TCPConnector(ssl=self._insecure_skip_verify)
+            connector=aiohttp.TCPConnector(ssl=False if self._insecure_skip_verify else None)
         ) as session:
             result, status_code = await self._post(session, packs_url, p.to_json())
             self._raise_error(status_code, "unable to register the pack")
@@ -158,7 +158,7 @@ class Client:
         :raise FlyteClientError when there is an error when retrieving api links
         """
         async with aiohttp.ClientSession(
-            connector=aiohttp.TCPConnector(ssl=self._insecure_skip_verify)
+            connector=aiohttp.TCPConnector(ssl=False if self._insecure_skip_verify else None)
         ) as session:
             result, status = await self._fetch(session, self._url)
             self._raise_error(status, "unable to fetch api links")
